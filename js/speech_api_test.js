@@ -8,7 +8,15 @@ recognition.maxAlternatives = 1;  // 결과값의 최대 개수
 document.querySelector('#start').onclick = function() {
     // 음성 인식 시작
     recognition.start();
-
+    var interval = setInterval(changeImage, 80); 
+    var interval2 = setInterval(changeImage2, 80); 
+    function stop(){
+        clearInterval(interval);
+        clearInterval(interval2);
+        interval = null;
+        interval2 = null;
+    }
+  setTimeout(stop, 5000);
 
     // 새로운 div 생성
     var newDiv = document.createElement('div');

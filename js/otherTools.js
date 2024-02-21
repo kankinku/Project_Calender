@@ -16,17 +16,6 @@ function changeImage2() {
 }
 
 
-document.querySelector('#start').onclick = function() { 
-  var interval = setInterval(changeImage, 80); 
-  var interval2 = setInterval(changeImage2, 80); 
-  function stop(){
-    clearInterval(interval);
-    clearInterval(interval2);
-    interval = null;
-    interval2 = null;
-  }
-  setTimeout(stop, 5000);
-}
 
 
 window.addEventListener('resize', function() {
