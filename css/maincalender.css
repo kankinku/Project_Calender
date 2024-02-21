@@ -8,16 +8,16 @@ body{
   margin: 0;
 }
 section {
-    display: flex;
-    left: 50%;
-    top: 50%;
-    margin-left: -875px;
-    margin-top: 200px;
-    width: 1750px;
-    position: relative;
-    justify-content: center;
-    background-color: white;
-  }
+  display: flex;
+  left: 50%;
+  top: 50%;
+  margin-left: -875px;
+  margin-top: 10vh;
+  width: 1750px;
+  position: relative;
+  justify-content: center;
+  background-color: white;
+}
 button {
   width: 75px;
   cursor: pointer;
@@ -105,7 +105,7 @@ button {
   width: 800px;
   background-color: white ;
   overflow: hidden;
-  position: fixed;
+  position: absolute;
   z-index: 3;
 }
 .day + #currentDay {
