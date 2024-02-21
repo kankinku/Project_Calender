@@ -1,0 +1,112 @@
+
+#weather{
+  text-align: center;
+  box-shadow: 0 0 4px gray;
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 250px;
+  height: 120px;
+  border-radius: 15px;
+  overflow: hidden;
+  color: white;
+  background: url("../img/KakaoTalk_20240221_112325424.png") no-repeat;
+  background-color: var(--mainBlue);
+  background-size: cover;
+  background-position: center;
+}
+
+#weatherTwo{
+  text-align: center;
+  box-shadow: 0 0 4px gray;
+  margin: 0 auto;
+  margin-top: 50px;
+  width: 250px;
+  height: 120px;
+  border-radius: 15px;
+  overflow: hidden;
+  color: white;
+  background: url("../img/KakaoTalk_20240221_112325424.png") no-repeat;
+  background-color: var(--mainBlue);
+  background-size: cover;
+  background-position: center;
+}
+
+/* Timer Part */
+.containerTime {
+  font-weight: 400 !important;
+  width: 60%;
+  min-width: 200px;
+  height: 40px;
+  margin: 15px auto;
+  margin-left: 10px;
+  margin-top: 5px;
+  padding: 0;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: left;
+  position: relative;
+  overflow: hidden;
+}
+
+#current-time {
+  position: absolute;
+  justify-content: left;
+  color: white;
+  font-size: 18px;
+}
+
+#nowWeather{
+  text-align: left;
+  margin-left: 15px;
+  margin-bottom: 0;
+}
+
+#city{
+  text-align: left;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+#temp{
+  text-align: right;
+  margin-top: 15px;
+  margin-right: 15px;
+  font-size: 35px;
+}
+
+#zip{
+  display: flex;
+  justify-content: space-between;
+}
+
+#innerzip{
+  display: flex;
+  flex-direction: column;
+}
+
+#description{
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 3px;
+  font-size: 12px;
+}
+
+#city2{
+  text-align: left;
+  margin-left: 15px;
+  font-size: 15px;
+}
+
+#temp2{
+  text-align: right;
+  margin-top: 15px;
+  margin-right: 15px;
+  font-size: 35px;
+}
+
+#description2{
+  text-align: left;
+  margin-left: 15px;
+  margin-top: 3px;
+  font-size: 12px;
+}

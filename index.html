@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="kor">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar App use API</title>
+    <script defer src="././js/style.js"></script>
+    <script defer src="./js/speech_api_test.js"></script>
+    <script defer src="./js/weather.js"></script>
+    <script defer src="./js/otherTools.js"></script>
+    <link rel="stylesheet" href="./css/tools.css">
+    <link rel="stylesheet" href="./css/anotherArea.css">
+    <link rel="stylesheet" href="./css/maincalender.css">
+    <link rel="stylesheet" href="./css/right.css">
+    <link rel="stylesheet" href="./css/Color.css">
+
+
+  </head>
+  <body>
+    <section>
+      <div id="windowmove">
+        <div id="eventLeft">
+          <div id="topImg">
+            <div id="ask"></div>
+          </div>
+          <button id="start">음성 이벤트 추가</button>
+          <div id="leftArea"></div>
+          <div id="underBar">
+            <img id="mic" src="./img/voice-microphone_78447.png">
+            <div id="speaking">
+              <img id="sound" src="./img/sound/3.png">
+              <div id="ingText">지금 말씀해주세요</div>
+              <img id="sound2" src="./img/sound/3.png">
+              <!-- 삭제할때 같은 이벤트가 calender배열에 있다면 this.remove해버리기 -->
+            </div>
+          </div>
+        </div>
+        <div id="eventRight">
+          <div id="weatheapi">
+            <div id="topBar"></div>
+            <img id="holder" src="./img/placeholder_684809.png">
+            <div id="weather">
+              <p id="nowWeather">now</p>
+              <div id="zip">
+                <div id="innerzip">
+                  <h2 id="city"></h2>
+                  <h3 id="description"></h3>
+                </div>
+                <h3 id="temp"></h3>
+              </div>
+            </div>
+          </div>
+          <div id="weatheapi">
+            <div id="weatherTwo">
+              <p id="nowWeather">now Seoul</p>
+              <div id="zip">
+                <div id="innerzip">
+                  <h2 id="city2"></h2>
+                  <h3 id="description2"></h3>
+                </div>
+                <h3 id="temp2"></h3>
+              </div>
+            </div>
+          </div>
+          <img id="plus" src="./img/Component 1.png">
+        </div>
+      </div>
+      <div id="calendarWindow">
+        <div id="topBar">
+          <div id="header">
+            <div id="calendarTop">
+              <div id="Display">
+                <div id="monthDisplay"></div>
+                <div id="YearDisplay"></div>
+              </div>
+              <div class="containerTime">
+                <div id="current-time"></div>
+              </div>
+            </div>
+            <div>
+              <button id="backButton">Back</button>
+              <button id="nextButton">Next</button>
+            </div>
+          </div>
+        </div>
+        <div id="container">
+    
+          <div id="weekdays">
+            <div style="color: red;">Sunday</div>
+            <div>Monday</div>
+            <div>Tuesday</div>
+            <div>Wednesday</div>
+            <div>Thursday</div>
+            <div>Friday</div>
+            <div style="color: red;">Saturday</div>
+          </div>
+    
+          <div id="calendar"></div>
+        </div>
+  
+      </div>
+    </section>
+    <div id="newEventModal">
+      <h2>New Event</h2>
+
+      <p>이름</p>
+      <input id="eventTitleInput" placeholder="Event Title" />
+      <p>주석</p>
+      <input id="eventReadyInput" placeholder="Event Ready" />
+
+      <button id="saveButton">Save</button>
+      <button id="cancelButton">Cancel</button>
+    </div>
+
+    <div id="deleteEventModal">
+      <h2>Event</h2>
+
+      <p id="eventText"></p>
+
+      <button id="deleteButton">Delete</button>
+      <button id="closeButton">Close</button>
+    </div>
+
+    
+    <div id="modalBackDrop"></div>  
+  </body>
+</html>

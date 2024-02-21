@@ -1,0 +1,228 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+body{
+  margin: 0;
+}
+section {
+    display: flex;
+    left: 50%;
+    top: 50%;
+    margin-left: -875px;
+    margin-top: 200px;
+    width: 1750px;
+    position: relative;
+    justify-content: center;
+    background-color: white;
+  }
+button {
+  width: 75px;
+  cursor: pointer;
+  box-shadow: 0px 0px 2px gray;
+  border: none;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  color: white;
+  margin-top: 17px;
+  margin-right: 10px;
+}
+
+
+#backButton{
+  margin-right: 5px !important;
+}
+
+#topBar{
+  height: 120px ;
+  background-color: var(--mainBlue);
+  margin-bottom: -60px !important;
+}
+
+
+#header {
+  padding: 10px;
+  color: white;
+  font-size: 26px;
+  font-family: sans-serif;
+  display: flex;
+  justify-content: space-between;
+}
+#header button {
+  background-color: white;
+  color: var(--mainBlue);
+}
+
+/* 일주일 표기 */
+#container {
+  width: 770px;
+  margin-left: 15px !important;
+}
+#weekdays {
+  width: 100%;
+  display: flex;
+  color: #247BA0;
+  margin-top: 60px;
+  /* nth-child(first) 사용해서 주말 붉게 만들기 */
+}
+#weekdays div {
+  text-align: center;
+  width: 100px;
+  padding: 10px;
+}
+
+/* 날자 표기 */
+#calendar {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.day {
+  position: relative;
+  width: 100px;
+  padding: 10px;
+  height: 100px;
+  cursor: pointer;
+  box-sizing: border-box;
+  background-color: white;
+  margin: 5px;
+  box-shadow: 0px 0px 3px #CBD4C2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.day:hover {
+  background-color: #e8faed;
+}
+#calendarWindow{
+  /* border: 1px solid var(--mainBlue); */
+  box-shadow: 0 0 4px gray;
+  border-radius: 15px;
+  height: 720px;
+  width: 800px;
+  background-color: white ;
+  overflow: hidden;
+  position: fixed;
+  z-index: 3;
+}
+.day + #currentDay {
+  background-color:#e8f4fa;
+}
+
+
+.event {
+  background-color: #58bae4;
+  color: white;
+  border-radius: 5px;
+  max-height: 55px;
+  overflow: hidden;
+}
+
+#calendarWindow .event{
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  opacity: 20%;
+  left: 7px;
+  top: 10px;
+  background-color: #58bae4;
+  color: white;
+  border-radius: 50%;
+  max-height: 55px;
+  overflow: hidden;
+}
+
+.padding {
+  cursor: default !important;
+  box-shadow: none !important;
+}
+
+#newEventModal, #deleteEventModal {
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: absolute;
+  font-family: sans-serif;
+}
+
+
+  /* 이벤트 입력창  */
+#eventTitleInput {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 3px gray;
+}
+#eventTitleInput.error {
+  border: 2px solid red;
+}
+
+#newEventModal input{
+  margin: 0;
+}
+#newEventModal button{
+  margin-top: 20px;
+}
+
+
+#eventReadyInput {
+  padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 25px;
+  border-radius: 3px;
+  outline: none;
+  border: none;
+  box-shadow: 0px 0px 3px gray;
+}
+#eventReadyInput.error {
+  border: 2px solid red;
+}
+#cancelButton, #deleteButton {
+  background-color: #d36c6c;
+}
+#saveButton, #closeButton {
+  background-color: var(--mainBlue);
+}
+#eventText {
+  font-size: 14px;
+}
+#modalBackDrop {
+  display: none;
+  top: 0px;
+  left: 0px;
+  z-index: 10;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  background-color: rgba(0,0,0,0.8);
+}
+  
+#YearDisplay{
+  font-size: 23px;
+  margin-left: 10px;
+}
+
+#Display{
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+}
+
+#calendarTop{
+  display: flex;
+  flex-direction: column;
+}

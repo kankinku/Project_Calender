@@ -1,0 +1,32 @@
+#holder{
+  position: absolute;
+  margin-top: 35px;
+  left: 50%;
+  margin-left: -25px;
+  width: 40px;
+  height: 40px;
+  padding: 5px;
+  background-color: #FE8B90;
+  border-radius: 50%;
+}
+
+#eventRight{
+  display: block;
+  overflow: hidden;
+  position: absolute;
+  /* border: 1px solid var(--mainBlue); */
+  box-shadow: 0 0 4px gray;
+  border-radius: 15px; 
+  width: 300px;
+  height: 720px;
+  right: 45px;
+}
+
+#plus{
+  position: absolute;
+  bottom: 100px;
+  left: 50%;
+  margin-left: -32.5px;
+  width: 70px;
+  height: 70px;
+}
