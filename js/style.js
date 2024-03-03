@@ -195,7 +195,7 @@ function deleteEvent() {
   });
 
   closeModal();
-} 
+}  
 
 function deleteEvent_left() {
   // 'events'와 'events_left' 배열에서 이벤트 삭제
