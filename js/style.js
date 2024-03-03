@@ -112,6 +112,8 @@ function load() {
           //   }
           // });
 
+          eventDiv
+
           // leftArea에 eventDiv 추가
           leftArea.appendChild(eventDiv);  // 원본 eventDiv 추가
           eventDiv.appendChild(eventDay)
@@ -130,6 +132,21 @@ function load() {
     calendar.appendChild(daySquare);    
   }
 }
+
+function openModal2(date) {
+  clicked = date;
+  //event day = num
+  const eventForDay = events.find(e => e.date === clicked);
+
+  if (eventForDay) {
+    document.getElementById('eventText').innerText = eventForDay.title;
+    deleteEventModal.style.display = 'block';
+  } else {
+    newEventModal.style.display = 'block';
+  }
+  backDrop.style.display = 'block';
+}
+
 function closeModal() {
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';

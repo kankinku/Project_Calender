@@ -49,23 +49,64 @@ window.onload = function() {
   }
 }
 
-const city = 'Seoul'; // 날씨 정보를 가져올 도시를 입력하세요.
+// const city = 'Incheon'; // 날씨 정보를 가져올 도시를 입력하세요.
 
-window.addEventListener('DOMContentLoaded', () => {
-  var apiKey = 'fe42816090f5641c971c8fd148f55a7b';
-  const city = 'Seoul'; // 날씨 정보를 가져올 도시를 입력하세요.
+// window.addEventListener('DOMContentLoaded', () => {
+//   var apiKey = 'fe42816090f5641c971c8fd148f55a7b';
 
+//   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+//     .then(response => response.json())
+//     .then(data => {
+//       const weatherDescription = data.weather[0].description;
+//       const temperature = data.main.temp.toFixed(1);
+
+//       document.getElementById('city2').innerHTML = `city: ${city}`;
+//       document.getElementById('temp2').innerHTML = temperature + '°C';
+//       document.getElementById('description2').innerHTML = 'weather: ' + weatherDescription;
+//     })
+//     .catch(error => {
+//       console.log('날씨 정보를 가져오는 중 오류가 발생했습니다.', error);
+//     });
+// });
+const newPlaceModal = document.getElementById('newPlaceModal')
+const openPlaceBtn = document.getElementById('plus')
+const createBtn = document.getElementById('create')
+const cancelBtn = document.getElementById('cancel')
+
+function openWeatherModal() {
+  newPlaceModal.style.display = "block"
+}
+
+function closeWeatherModal() {
+  newPlaceModal.style.display = "none"
+}
+
+openPlaceBtn.addEventListener('click', () => {
+  openWeatherModal()
+})
+
+createBtn.addEventListener('click', () => {
+  const provinceSelect = document.getElementById("province");
+  const city = provinceSelect.value; // 날씨 정보를 가져올 도시를 입력하세요.
+  const apiKey = 'fe42816090f5641c971c8fd148f55a7b';
+  
   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
     .then(response => response.json())
     .then(data => {
       const weatherDescription = data.weather[0].description;
       const temperature = data.main.temp.toFixed(1);
 
-      document.getElementById('city2').innerHTML = 'city: Seoul';
+      document.getElementById('city2').innerHTML = `city: ${city}`;
       document.getElementById('temp2').innerHTML = temperature + '°C';
       document.getElementById('description2').innerHTML = 'weather: ' + weatherDescription;
     })
     .catch(error => {
       console.log('날씨 정보를 가져오는 중 오류가 발생했습니다.', error);
     });
-});
+
+  closeWeatherModal()
+})
+
+cancelBtn.addEventListener('click', () => {
+  closeWeatherModal()
+})
