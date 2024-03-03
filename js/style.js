@@ -194,7 +194,7 @@ function deleteEvent() {
     
   });
 
-  closeModal();
+  closeModal(); 
 }  
 //wlsdn123580@gmail.com
 
