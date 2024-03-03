@@ -88,6 +88,7 @@ function load() {
           eventDay.innerText = eventForDay.date;
           title.innerText = eventForDay.title;
           ready.innerText = eventForDay.Ready;
+          clicked = eventForDay.date;
 
           // daySquare에 eventDiv 추가
           daySquare.appendChild(eventDiv.cloneNode(true));  // 복제하여 추가
@@ -100,19 +101,21 @@ function load() {
             existingEvent.remove();
           }
 
-          // 클릭 시 이벤트 삭제
-          // eventDiv.addEventListener('click', function() {
+
+          eventDiv.addEventListener('click', () => {
             
-
-          //   // 사용자에게 삭제할 것인지 묻는 확인 대화 상자 표시
-          //   const isConfirmed = confirm('이 이벤트를 삭제하시겠습니까?');
-          //   if (isConfirmed) {
-          //     // 사용자가 확인을 누르면 eventDiv 삭제
-          //     this.remove();
-          //   }
-          // });
-
-          eventDiv
+            console.log(clicked)
+            //event day = num
+            const eventForDay = events.find(e => e.date === clicked);
+          
+            if (eventForDay) {
+              document.getElementById('eventText').innerText = eventForDay.title;
+              deleteEventModal.style.display = 'block';
+            } else {
+              newEventModal.style.display = 'block';
+            }
+            backDrop.style.display = 'block';
+          })
 
           // leftArea에 eventDiv 추가
           leftArea.appendChild(eventDiv);  // 원본 eventDiv 추가
@@ -131,20 +134,6 @@ function load() {
 
     calendar.appendChild(daySquare);    
   }
-}
-
-function openModal2(date) {
-  clicked = date;
-  //event day = num
-  const eventForDay = events.find(e => e.date === clicked);
-
-  if (eventForDay) {
-    document.getElementById('eventText').innerText = eventForDay.title;
-    deleteEventModal.style.display = 'block';
-  } else {
-    newEventModal.style.display = 'block';
-  }
-  backDrop.style.display = 'block';
 }
 
 function closeModal() {
