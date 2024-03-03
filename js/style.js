@@ -110,16 +110,6 @@ function load() {
           
             if (eventForDay) {
               document.getElementById('eventText').innerText = eventForDay.title;
- 
-              let events = Array.from(document.querySelectorAll('[id="event"]'));
-
-              events.forEach(function(eventDiv) {
-                eventDiv.addEventListener('click', function() {
-                  let leftDay = this.getAttribute('data-date');
-                  console.log(leftDay);
-                });
-              });
-
               deleteEventModal_left.style.display = 'block';
             } else {
               newEventModal.style.display = 'block';
@@ -208,40 +198,27 @@ function deleteEvent() {
 }
 
 function deleteEvent_left() {
- // 'event' 클래스를 가진 모든 div에 클릭 이벤트 리스너를 추가
-  const eventDivs = document.getElementsByClassName('event');
-  Array.from(eventDivs).forEach(div => {
-    div.addEventListener('click', function() {
-      const date = this.getAttribute('data-date'); // 클릭된 div의 'data-date' 값을 가져옴
+  // 'events'와 'events_left' 배열에서 이벤트 삭제
+  events = events.filter(e => e.date !== clicked);
+  events_left = events_left.filter(e => e.date !== clicked);
+  localStorage.setItem('events', JSON.stringify(events));
+  localStorage.setItem('events_left', JSON.stringify(events_left));
 
-      // localStorage에서 이벤트 데이터를 가져옴
-      const events = JSON.parse(localStorage.getItem('events'));
-      const events_left = JSON.parse(localStorage.getItem('events_left'));
+  // 'leftArea' 요소 내의 이벤트 중에서 배열에 없는 이벤트만 삭제
+  const leftArea = document.getElementById('leftArea');
+  const eventDivs = Array.from(leftArea.getElementsByClassName('event'));
+  eventDivs.forEach(div => {
 
-      // 'events'와 'events_left' 배열에서 클릭된 div와 같은 'data-date' 값을 가진 이벤트를 제거
-      const filteredEvents = events.filter(e => e.date !== date);
-      const filteredEventsLeft = events_left.filter(e => e.date !== date);
-      
-      // 수정된 배열을 다시 localStorage에 저장
-      localStorage.setItem('events', JSON.stringify(filteredEvents));
-      localStorage.setItem('events_left', JSON.stringify(filteredEventsLeft));
+    const eventDate = div.getAttribute('data-date');
 
-      // 'leftArea' 요소 내의 이벤트 중에서 배열에 없는 이벤트만 삭제
-      const leftArea = document.getElementById('leftArea');
-      const eventDivsInLeftArea = Array.from(leftArea.getElementsByClassName('event'));
-
-      eventDivsInLeftArea.forEach(divInLeftArea => {
-        const eventDate = divInLeftArea.getAttribute('data-date');
-
-        if (!filteredEventsLeft.find(e => e.date === eventDate)) {
-          // 이벤트가 'filteredEventsLeft' 배열에 없을 경우 삭제
-          divInLeftArea.remove();
-        }
-      });
-
-      closeModal();
-    });
+    if (!events_left.find(e => e.date === eventDate)) {
+      // 이벤트가 'events_left' 배열에 없을 경우 삭제
+      div.remove();
+    }
+    
   });
+
+  closeModal();
 }
 
 
@@ -255,6 +232,7 @@ function initButtons() {
     nav--;
     load();
   });
+
 
   document.getElementById('saveButton').addEventListener('click', saveEvent);
   document.getElementById('cancelButton').addEventListener('click', closeModal);
