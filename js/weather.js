@@ -49,25 +49,24 @@ window.onload = function() {
   }
 }
 
-// const city = 'Incheon'; // 날씨 정보를 가져올 도시를 입력하세요.
+const city = 'seoul'; // 날씨 정보를 가져올 도시를 입력하세요.
+window.addEventListener('DOMContentLoaded', () => {
+  var apiKey = 'fe42816090f5641c971c8fd148f55a7b';
 
-// window.addEventListener('DOMContentLoaded', () => {
-//   var apiKey = 'fe42816090f5641c971c8fd148f55a7b';
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
+    .then(response => response.json())
+    .then(data => {
+      const weatherDescription = data.weather[0].description;
+      const temperature = data.main.temp.toFixed(1);
 
-//   fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`)
-//     .then(response => response.json())
-//     .then(data => {
-//       const weatherDescription = data.weather[0].description;
-//       const temperature = data.main.temp.toFixed(1);
-
-//       document.getElementById('city2').innerHTML = `city: ${city}`;
-//       document.getElementById('temp2').innerHTML = temperature + '°C';
-//       document.getElementById('description2').innerHTML = 'weather: ' + weatherDescription;
-//     })
-//     .catch(error => {
-//       console.log('날씨 정보를 가져오는 중 오류가 발생했습니다.', error);
-//     });
-// });
+      document.getElementById('city2').innerHTML = `city: ${city}`;
+      document.getElementById('temp2').innerHTML = temperature + '°C';
+      document.getElementById('description2').innerHTML = 'weather: ' + weatherDescription;
+    })
+    .catch(error => {
+      console.log('날씨 정보를 가져오는 중 오류가 발생했습니다.', error);
+    });
+});
 const newPlaceModal = document.getElementById('newPlaceModal')
 const openPlaceBtn = document.getElementById('plus')
 const createBtn = document.getElementById('create')
