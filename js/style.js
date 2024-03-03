@@ -101,7 +101,7 @@ function load() {
             existingEvent.remove();
           }
 
-
+          // 현재 delete하면 가장 위에 것이 삭제되는 문제가 발생한다. (1번을 선택해도 2번이 삭제됨)
           eventDiv.addEventListener('click', () => {
             
             console.log(clicked)
