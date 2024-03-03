@@ -110,6 +110,16 @@ function load() {
           
             if (eventForDay) {
               document.getElementById('eventText').innerText = eventForDay.title;
+ 
+              let events = Array.from(document.querySelectorAll('[id="event"]'));
+
+              events.forEach(function(eventDiv) {
+                eventDiv.addEventListener('click', function() {
+                  let leftDay = this.getAttribute('data-date');
+                  console.log(leftDay);
+                });
+              });
+
               deleteEventModal_left.style.display = 'block';
             } else {
               newEventModal.style.display = 'block';
@@ -253,6 +263,8 @@ function initButtons() {
   document.getElementById('deleteButton_left').addEventListener('click', deleteEvent_left);
 
   document.getElementById('closeButton').addEventListener('click', closeModal);
+  document.getElementById('closeButton_left').addEventListener('click', closeModal);
+
 }
 
 initButtons();
