@@ -154,6 +154,20 @@ button {
   font-family: sans-serif;
 }
 
+#newEventModal, #deleteEventModal_left {
+  display: none;
+  z-index: 20;
+  padding: 25px;
+  background-color: #e8f4fa;
+  box-shadow: 0px 0px 3px black;
+  border-radius: 5px;
+  width: 350px;
+  top: 100px;
+  left: calc(50% - 175px);
+  position: absolute;
+  font-family: sans-serif;
+}
+
 
   /* 이벤트 입력창  */
 #eventTitleInput {
@@ -194,6 +208,11 @@ button {
 #cancelButton, #deleteButton {
   background-color: #d36c6c;
 }
+
+#cancelButton, #deleteButton_left {
+  background-color: #d36c6c;
+}
+
 #saveButton, #closeButton {
   background-color: var(--mainBlue);
 }

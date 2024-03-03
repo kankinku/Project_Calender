@@ -1,11 +1,13 @@
 let nav = 0;
 let clicked = null;
+let leftDay = null;
 let events = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events')) : [];
 let events_left = localStorage.getItem('events') ? JSON.parse(localStorage.getItem('events_left')) : [];
 
 const calendar = document.getElementById('calendar');
 const newEventModal = document.getElementById('newEventModal');
 const deleteEventModal = document.getElementById('deleteEventModal');
+const deleteEventModal_left = document.getElementById('deleteEventModal_left');
 const backDrop = document.getElementById('modalBackDrop');
 const eventTitleInput = document.getElementById('eventTitleInput');
 const eventReadyInput = document.getElementById('eventReadyInput');
@@ -103,14 +105,12 @@ function load() {
 
           // 현재 delete하면 가장 위에 것이 삭제되는 문제가 발생한다. (1번을 선택해도 2번이 삭제됨)
           eventDiv.addEventListener('click', () => {
-            
-            console.log(clicked)
             //event day = num
             const eventForDay = events.find(e => e.date === clicked);
           
             if (eventForDay) {
               document.getElementById('eventText').innerText = eventForDay.title;
-              deleteEventModal.style.display = 'block';
+              deleteEventModal_left.style.display = 'block';
             } else {
               newEventModal.style.display = 'block';
             }
@@ -123,15 +123,12 @@ function load() {
           eventDiv.appendChild(title)
           eventDiv.appendChild(ready)
           eventDiv.appendChild(sideBar)
-      }
+        }
 
       daySquare.addEventListener('click', () => openModal(dayString));
     } else {
       daySquare.classList.add('padding');
     }
-
-  
-
     calendar.appendChild(daySquare);    
   }
 }
@@ -140,6 +137,7 @@ function closeModal() {
   eventTitleInput.classList.remove('error');
   newEventModal.style.display = 'none';
   deleteEventModal.style.display = 'none';
+  deleteEventModal_left.style.display = 'none';
   backDrop.style.display = 'none';
   eventTitleInput.value = '';
   clicked = null;
@@ -199,6 +197,44 @@ function deleteEvent() {
   closeModal();
 }
 
+function deleteEvent_left() {
+ // 'event' 클래스를 가진 모든 div에 클릭 이벤트 리스너를 추가
+  const eventDivs = document.getElementsByClassName('event');
+  Array.from(eventDivs).forEach(div => {
+    div.addEventListener('click', function() {
+      const date = this.getAttribute('data-date'); // 클릭된 div의 'data-date' 값을 가져옴
+
+      // localStorage에서 이벤트 데이터를 가져옴
+      const events = JSON.parse(localStorage.getItem('events'));
+      const events_left = JSON.parse(localStorage.getItem('events_left'));
+
+      // 'events'와 'events_left' 배열에서 클릭된 div와 같은 'data-date' 값을 가진 이벤트를 제거
+      const filteredEvents = events.filter(e => e.date !== date);
+      const filteredEventsLeft = events_left.filter(e => e.date !== date);
+      
+      // 수정된 배열을 다시 localStorage에 저장
+      localStorage.setItem('events', JSON.stringify(filteredEvents));
+      localStorage.setItem('events_left', JSON.stringify(filteredEventsLeft));
+
+      // 'leftArea' 요소 내의 이벤트 중에서 배열에 없는 이벤트만 삭제
+      const leftArea = document.getElementById('leftArea');
+      const eventDivsInLeftArea = Array.from(leftArea.getElementsByClassName('event'));
+
+      eventDivsInLeftArea.forEach(divInLeftArea => {
+        const eventDate = divInLeftArea.getAttribute('data-date');
+
+        if (!filteredEventsLeft.find(e => e.date === eventDate)) {
+          // 이벤트가 'filteredEventsLeft' 배열에 없을 경우 삭제
+          divInLeftArea.remove();
+        }
+      });
+
+      closeModal();
+    });
+  });
+}
+
+
 function initButtons() {
   document.getElementById('nextButton').addEventListener('click', () => {
     nav++;
@@ -211,10 +247,10 @@ function initButtons() {
   });
 
   document.getElementById('saveButton').addEventListener('click', saveEvent);
-
   document.getElementById('cancelButton').addEventListener('click', closeModal);
-
   document.getElementById('deleteButton').addEventListener('click', deleteEvent);
+
+  document.getElementById('deleteButton_left').addEventListener('click', deleteEvent_left);
 
   document.getElementById('closeButton').addEventListener('click', closeModal);
 }
