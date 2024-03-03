@@ -2,7 +2,7 @@ let imageArray = ['../img/sound/1.png', '../img/sound/2.png', '../img/sound/3.pn
 ,'../img/sound/4.png','../img/sound/3.png','../img/sound/2.png','../img/sound/1.png']; 
 let imageIndex = 0;
 let imageIndex2 = 0;
-
+ 
 function changeImage() {
   let imgElement = document.getElementById('sound');
   imgElement.src = imageArray[imageIndex];

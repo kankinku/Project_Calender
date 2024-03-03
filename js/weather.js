@@ -12,7 +12,7 @@ window.onload = function() {
     var x = position.coords.latitude;
     var y = position.coords.longitude;
     console.log("사용자의 위도: " + x + ", 경도: " + y);
-    
+     
     var url = `https://api.openweathermap.org/data/2.5/weather?lat=${x}&lon=${y}&appid=` + apiKey ;
     fetch(url)
     .then(response => response.json())

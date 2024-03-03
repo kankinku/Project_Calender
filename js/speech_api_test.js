@@ -15,9 +15,9 @@ document.querySelector('#start').onclick = function() {
         clearInterval(interval2);
         interval = null;
         interval2 = null;
-    }
+    } 
   setTimeout(stop, 5000);
-
+ 
     // 새로운 div 생성
     var newDiv = document.createElement('div');
     newDiv.className = 'eventR';  // 클래스 이름 설정

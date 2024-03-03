@@ -171,7 +171,7 @@ function saveEvent() {
     eventTitleInput.classList.add('error');
   }
 }
-
+ 
 
 function deleteEvent() {
   // 'events'와 'events_left' 배열에서 이벤트 삭제
