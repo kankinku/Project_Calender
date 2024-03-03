@@ -153,6 +153,12 @@ button {
   position: absolute;
   font-family: sans-serif;
 }
+#deleteButton_left{
+  background-color: #d36c6c;
+}
+#closeButton_left{
+  background-color: var(--mainBlue);
+}
 
 #newEventModal, #deleteEventModal_left {
   display: none;
@@ -206,10 +212,6 @@ button {
   border: 2px solid red;
 }
 #cancelButton, #deleteButton {
-  background-color: #d36c6c;
-}
-
-#cancelButton, #deleteButton_left {
   background-color: #d36c6c;
 }
 
