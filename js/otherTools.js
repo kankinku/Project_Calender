@@ -8,7 +8,7 @@ function changeImage() {
   imgElement.src = imageArray[imageIndex];
   imageIndex = (imageIndex + 1) % imageArray.length;
 }
-
+ 
 function changeImage2() {
   let imgElement2 = document.getElementById('sound2');
   imgElement2.src = imageArray[imageIndex];

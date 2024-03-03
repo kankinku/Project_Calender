@@ -190,7 +190,7 @@ function deleteEvent() {
     if (!events_left.find(e => e.date === eventDate)) {
       // 이벤트가 'events_left' 배열에 없을 경우 삭제
       div.remove();
-    }
+    } 
     
   });
 
@@ -218,7 +218,7 @@ function deleteEvent_left() {
     }
     
   });
-
+ 
   closeModal();
 }
 
