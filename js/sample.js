@@ -5,7 +5,7 @@ function deleteEvent() {
     localStorage.setItem('events', JSON.stringify(events));
     localStorage.setItem('events_left', JSON.stringify(events_left));
   
-    // 'leftArea' 요소 내의 이벤트 중에서 배열에 없는 이벤트만 삭제
+    // 'leftArea' 요소 내의 이벤트 중에서 배열에 없는 이벤트만 삭제 
     const leftArea = document.getElementById('leftArea');
     const eventDivs = Array.from(leftArea.getElementsByClassName('event'));
     eventDivs.forEach(div => {

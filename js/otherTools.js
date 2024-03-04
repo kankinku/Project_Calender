@@ -5,7 +5,7 @@ let imageIndex2 = 0;
  
 function changeImage() {
   let imgElement = document.getElementById('sound');
-  imgElement.src = imageArray[imageIndex];
+  imgElement.src = imageArray[imageIndex]; 
   imageIndex = (imageIndex + 1) % imageArray.length;
 }
  
