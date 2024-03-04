@@ -9,7 +9,7 @@ function deleteEvent() {
     const leftArea = document.getElementById('leftArea');
     const eventDivs = Array.from(leftArea.getElementsByClassName('event'));
     eventDivs.forEach(div => {
-   
+    
       const eventDate = div.getAttribute('data-date');
   
       if (!events_left.find(e => e.date === eventDate)) {
